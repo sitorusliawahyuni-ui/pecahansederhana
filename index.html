@@ -1,1 +1,924 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Pecahan Sederhana - Media Edukasi Interaktif SD</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka (ramah anak) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Fredoka', 'cursive', 'sans-serif'],
+                    },
+                    colors: {
+                        kid: {
+                            sky: '#0EA5E9',
+                            sun: '#F59E0B',
+                            mint: '#10B981',
+                            berry: '#F43F5E',
+                            grape: '#8B5CF6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Kustomisasi gaya untuk tampilan ramah anak dan animasi halus */
+        @keyframes bounceSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: bounceSlow 3s ease-in-out infinite;
+        }
+        /* Styling Slider Kustom */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 12px;
+            border-radius: 999px;
+            background: #E2E8F0;
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #F59E0B;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body class="bg-sky-50/70 text-slate-800 antialiased selection:bg-amber-200 selection:text-amber-900">
 
+    <!-- 1. HEADER & NAVIGASI CEPAT -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-sky-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-between items-center py-3 gap-3">
+                <!-- Logo / Judul Situs -->
+                <a href="#beranda" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-xl shadow-md group-hover:rotate-6 transition-transform">
+                        🍕
+                    </div>
+                    <div>
+                        <span class="font-display font-bold text-xl text-slate-900 tracking-wide block leading-none">
+                            Pecahan<span class="text-sky-500">Seru</span>
+                        </span>
+                        <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Matematika SD</span>
+                    </div>
+                </a>
+
+                <!-- Tombol Navigasi Cepat -->
+                <div class="flex items-center gap-1.5 sm:gap-3 bg-slate-100 p-1.5 rounded-2xl">
+                    <a href="#materi" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:bg-white hover:text-sky-600 hover:shadow-sm transition-all flex items-center gap-1.5">
+                        <span>📖</span> Materi
+                    </a>
+                    <a href="#eksplorasi" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-700 hover:bg-white hover:text-amber-600 hover:shadow-sm transition-all flex items-center gap-1.5">
+                        <span>🎛️</span> Eksplorasi
+                    </a>
+                    <a href="#kuis" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-emerald-500 text-white hover:bg-emerald-600 shadow-sm transition-all flex items-center gap-1.5">
+                        <span>🏆</span> Kuis (10 Soal)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="beranda" class="relative overflow-hidden bg-gradient-to-b from-sky-100 via-white to-sky-50/70 pt-10 pb-14 sm:pt-14 sm:pb-20 border-b border-sky-100">
+        <!-- Dekorasi Bulatan Latar -->
+        <div class="absolute top-6 left-10 w-32 h-32 bg-amber-300/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute bottom-6 right-10 w-40 h-40 bg-sky-300/30 rounded-full blur-2xl pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-800 text-xs sm:text-sm font-bold mb-4">
+                        <span>✨</span> Mudah, Visual, dan Menyenangkan!
+                    </div>
+                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 leading-tight mb-4">
+                        Belajar <span class="text-sky-500">Pecahan</span> <span class="text-amber-500">Sederhana</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-7 max-w-2xl mx-auto lg:mx-0">
+                        Halo Adik-adik! Pernahkah kamu membagi kue atau pizza bersama teman? Yuk, pelajari cara membaca, menggambar, membandingkan, dan bermain dengan bilangan pecahan!
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3">
+                        <a href="#materi" class="px-6 py-3.5 rounded-2xl bg-sky-500 hover:bg-sky-600 text-white font-bold shadow-lg shadow-sky-500/25 transition-all flex items-center gap-2">
+                            Mulai Belajar Materi 🚀
+                        </a>
+                        <a href="#eksplorasi" class="px-6 py-3.5 rounded-2xl bg-white hover:bg-amber-50 text-slate-800 border-2 border-amber-300 font-bold transition-all flex items-center gap-2">
+                            Coba Simulator Pizza 🍕
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ilustrasi Hero Ramah Anak -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="bg-white p-6 rounded-3xl shadow-xl border-2 border-sky-100 max-w-xs w-full text-center animate-float">
+                        <div id="hero-pizza-svg" class="w-44 h-44 mx-auto mb-3"></div>
+                        <div class="inline-flex items-center gap-3 bg-amber-50 px-5 py-2.5 rounded-2xl border border-amber-200">
+                            <div class="flex flex-col items-center font-display text-2xl font-bold text-amber-600 leading-none">
+                                <span>3</span>
+                                <span class="w-6 h-1 bg-slate-800 rounded-full my-1"></span>
+                                <span class="text-sky-600">4</span>
+                            </div>
+                            <div class="text-left">
+                                <span class="block text-xs font-bold text-slate-400 uppercase">Dibaca:</span>
+                                <span class="font-display font-bold text-slate-800 text-base">Tiga per empat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. BAGIAN MATERI INTI -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+        
+        <section id="materi" class="scroll-mt-24 space-y-12">
+            <!-- Judul Seksi -->
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="px-3.5 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-extrabold uppercase tracking-wider">Bagian 1 • Konsep Dasar</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-3">Apa Itu Bilangan Pecahan?</h2>
+                <p class="text-slate-600 text-sm sm:text-base">
+                    <strong>Pecahan</strong> adalah bagian dari satu keseluruhan yang dibagi menjadi bagian-bagian yang <strong>sama besar</strong>.
+                </p>
+            </div>
+
+            <!-- A. Kartu Pengertian Pembilang & Penyebut -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-md border-2 border-sky-100">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    <!-- Visual Anatomi Pecahan -->
+                    <div class="md:col-span-5 flex flex-col items-center justify-center bg-gradient-to-br from-sky-50 to-amber-50 rounded-3xl p-8 border border-sky-100">
+                        <div class="flex items-center gap-6">
+                            <!-- Angka Pecahan Besar -->
+                            <div class="flex flex-col items-center font-display text-6xl sm:text-7xl font-bold select-none">
+                                <span class="text-amber-500 drop-shadow-sm">1</span>
+                                <span class="w-16 h-2 bg-slate-800 rounded-full my-2"></span>
+                                <span class="text-sky-600 drop-shadow-sm">4</span>
+                            </div>
+                            <!-- Penunjuk Panah -->
+                            <div class="space-y-6 text-left">
+                                <div class="bg-amber-100 border-l-4 border-amber-500 px-3.5 py-2 rounded-r-xl">
+                                    <span class="font-display font-bold text-amber-800 text-base block">← Pembilang (Atas)</span>
+                                    <span class="text-xs text-amber-900/80">Jumlah bagian yang dipilih/diambil</span>
+                                </div>
+                                <div class="bg-sky-100 border-l-4 border-sky-500 px-3.5 py-2 rounded-r-xl">
+                                    <span class="font-display font-bold text-sky-800 text-base block">← Penyebut (Bawah)</span>
+                                    <span class="text-xs text-sky-900/80">Jumlah seluruh potongan sama besar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Penjelasan Mudah Dipahami -->
+                    <div class="md:col-span-7 space-y-4">
+                        <h3 class="font-display text-2xl font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-xl bg-amber-400 text-white flex items-center justify-center text-base">💡</span>
+                            Cara Mudah Mengingatnya!
+                        </h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Bayangkan kamu memiliki <strong>1 loyang kue utuh</strong>, lalu kamu memotongnya menjadi <strong>4 bagian sama besar</strong>. Jika kamu mengambil <strong>1 potong kue</strong>, maka bagian kue yang kamu ambil bernilai <strong>1/4 (satu per empat)</strong>.
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200">
+                                <span class="font-bold text-amber-800 block mb-1">1. Pembilang (Di Atas)</span>
+                                <p class="text-xs sm:text-sm text-slate-700">Menunjukkan banyaknya bagian yang diarsir, diambil, atau dimakan.</p>
+                            </div>
+                            <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200">
+                                <span class="font-bold text-sky-800 block mb-1">2. Penyebut (Di Bawah)</span>
+                                <p class="text-xs sm:text-sm text-slate-700">Menunjukkan total semua potongan yang dibagi sama rata.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B. Contoh Pecahan Sehari-hari (1/2, 1/3, 1/4, 3/4) -->
+            <div class="space-y-6">
+                <div class="text-center">
+                    <h3 class="font-display text-2xl sm:text-3xl font-bold text-slate-900">Contoh Pecahan Sehari-Hari</h3>
+                    <p class="text-slate-600 text-sm sm:text-base mt-1">Perhatikan potongan pizza yang berwarna cerah pada setiap gambar di bawah ini:</p>
+                </div>
+
+                <div id="examples-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <!-- Kartu contoh 1/2, 1/3, 1/4, 3/4 dirender otomatis oleh JS dengan SVG akurat -->
+                </div>
+            </div>
+
+            <!-- C. Perbandingan Pecahan & Pecahan Senilai -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Kartu Perbandingan Pecahan -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-rose-100 flex flex-col justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-bold">Perbandingan Pecahan</span>
+                        <h3 class="font-display text-2xl font-bold text-slate-900 mt-2 mb-3">Mana yang Lebih Besar: 1/2 atau 1/4?</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">
+                            Semakin <strong>banyak</strong> sebuah kue dibagi, maka ukuran tiap potongannya akan semakin <strong>kecil</strong>. Jadi, <strong>1/2 lebih besar dari 1/4</strong> (<span class="font-bold text-rose-600">1/2 &gt; 1/4</span>).
+                        </p>
+                    </div>
+                    <div class="bg-rose-50/70 rounded-2xl p-5 border border-rose-100 flex items-center justify-around gap-2">
+                        <div class="text-center">
+                            <div id="comp-svg-1" class="w-24 h-24 mx-auto mb-2"></div>
+                            <span class="font-display font-bold text-xl text-slate-900">1/2</span>
+                            <span class="block text-xs text-emerald-600 font-bold">Lebih Besar</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white border-2 border-rose-300 flex items-center justify-center font-display text-3xl font-bold text-rose-600 shadow-sm">
+                            &gt;
+                        </div>
+                        <div class="text-center">
+                            <div id="comp-svg-2" class="w-24 h-24 mx-auto mb-2"></div>
+                            <span class="font-display font-bold text-xl text-slate-900">1/4</span>
+                            <span class="block text-xs text-slate-500 font-bold">Lebih Kecil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Pecahan Senilai -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-md border-2 border-emerald-100 flex flex-col justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">Pecahan Senilai</span>
+                        <h3 class="font-display text-2xl font-bold text-slate-900 mt-2 mb-3">Bentuk Berbeda, Ukuran Sama: 1/2 = 2/4</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-5">
+                            <strong>Pecahan senilai</strong> adalah pecahan yang angkanya berbeda tetapi memiliki luas bagian yang <strong>sama besar</strong>. Lihatlah bahwa <strong>1/2</strong> sama besar dengan <strong>2/4</strong>!
+                        </p>
+                    </div>
+                    <div class="bg-emerald-50/70 rounded-2xl p-5 border border-emerald-100 flex items-center justify-around gap-2">
+                        <div class="text-center">
+                            <div id="equiv-svg-1" class="w-24 h-24 mx-auto mb-2"></div>
+                            <span class="font-display font-bold text-xl text-slate-900">1/2</span>
+                            <span class="block text-xs text-emerald-700 font-bold">1 dari 2 bagian</span>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white border-2 border-emerald-300 flex items-center justify-center font-display text-3xl font-bold text-emerald-600 shadow-sm">
+                            =
+                        </div>
+                        <div class="text-center">
+                            <div id="equiv-svg-2" class="w-24 h-24 mx-auto mb-2"></div>
+                            <span class="font-display font-bold text-xl text-slate-900">2/4</span>
+                            <span class="block text-xs text-emerald-700 font-bold">2 dari 4 bagian</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SIMULATOR / EKSPLORASI PECAHAN INTERAKTIF -->
+        <section id="eksplorasi" class="scroll-mt-24">
+            <div class="bg-gradient-to-br from-amber-400 via-orange-400 to-amber-500 rounded-3xl p-1.5 shadow-xl">
+                <div class="bg-white rounded-[22px] p-6 sm:p-10">
+                    <div class="text-center max-w-2xl mx-auto mb-8">
+                        <span class="px-3.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-extrabold uppercase tracking-wider">Bagian 2 • Laboratorium Mini</span>
+                        <h2 class="font-display text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-2">Simulator Pecahan Interaktif</h2>
+                        <p class="text-slate-600 text-sm sm:text-base">
+                            Geser tombol atau klik tanda <strong>+ / -</strong> untuk mengubah <strong>Pembilang</strong> dan <strong>Penyebut</strong>, lalu lihat perubahan gambarnya secara langsung!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <!-- Panel Kontrol Kiri -->
+                        <div class="lg:col-span-5 space-y-6 bg-slate-50 p-6 rounded-3xl border border-slate-200">
+                            <!-- Kontrol Pembilang -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="num-slider" class="font-display font-bold text-amber-600 text-lg">
+                                        Pembilang (Bagian Diarsir)
+                                    </label>
+                                    <span id="num-badge" class="px-3 py-1 rounded-xl bg-amber-500 text-white font-display font-bold text-lg">1</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="changeNumerator(-1)" aria-label="Kurangi pembilang" class="w-10 h-10 rounded-xl bg-white border-2 border-slate-300 hover:border-amber-500 font-bold text-xl flex items-center justify-center shadow-sm active:scale-95 transition">-</button>
+                                    <input type="range" id="num-slider" min="1" max="4" value="1" oninput="updateSimulator()" class="w-full">
+                                    <button onclick="changeNumerator(1)" aria-label="Tambah pembilang" class="w-10 h-10 rounded-xl bg-white border-2 border-slate-300 hover:border-amber-500 font-bold text-xl flex items-center justify-center shadow-sm active:scale-95 transition">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Kontrol Penyebut -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="den-slider" class="font-display font-bold text-sky-600 text-lg">
+                                        Penyebut (Total Potongan)
+                                    </label>
+                                    <span id="den-badge" class="px-3 py-1 rounded-xl bg-sky-500 text-white font-display font-bold text-lg">4</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button onclick="changeDenominator(-1)" aria-label="Kurangi penyebut" class="w-10 h-10 rounded-xl bg-white border-2 border-slate-300 hover:border-sky-500 font-bold text-xl flex items-center justify-center shadow-sm active:scale-95 transition">-</button>
+                                    <input type="range" id="den-slider" min="2" max="8" value="4" oninput="updateSimulator()" class="w-full">
+                                    <button onclick="changeDenominator(1)" aria-label="Tambah penyebut" class="w-10 h-10 rounded-xl bg-white border-2 border-slate-300 hover:border-sky-500 font-bold text-xl flex items-center justify-center shadow-sm active:scale-95 transition">+</button>
+                                </div>
+                            </div>
+
+                            <!-- Kotak Info Bacaan & Nilai Tambahan -->
+                            <div class="bg-white p-5 rounded-2xl border-2 border-amber-200 shadow-sm space-y-3">
+                                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="flex flex-col items-center font-display text-3xl font-bold leading-none">
+                                            <span id="sim-num-display" class="text-amber-500">1</span>
+                                            <span class="w-7 h-1 bg-slate-800 rounded-full my-1"></span>
+                                            <span id="sim-den-display" class="text-sky-600">4</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-xs font-bold text-slate-400 uppercase block">Cara Membaca:</span>
+                                            <span id="sim-read-text" class="font-display font-bold text-lg text-slate-900">Satu per empat</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between text-xs sm:text-sm pt-1">
+                                    <span class="text-slate-500 font-medium">Bentuk Desimal: <strong id="sim-decimal" class="text-slate-800">0,25</strong></span>
+                                    <span class="text-slate-500 font-medium">Persen: <strong id="sim-percent" class="text-emerald-600">25%</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel Visualisasi Real-time Kanan -->
+                        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                            <!-- Visualisasi Lingkaran (Pizza / Pie Chart) -->
+                            <div class="bg-sky-50/70 rounded-3xl p-6 border-2 border-sky-100 text-center">
+                                <span class="inline-block px-3 py-1 rounded-full bg-white text-sky-700 text-xs font-bold shadow-xs mb-3">
+                                    🍕 Bentuk Lingkaran (Pizza)
+                                </span>
+                                <div id="sim-pie-container" class="w-48 h-48 mx-auto my-2 flex items-center justify-center">
+                                    <!-- SVG Pie Chart dirender secara dinamis -->
+                                </div>
+                                <p id="sim-pie-caption" class="text-xs font-semibold text-slate-600 mt-2">
+                                    1 dari 4 potong pizza diambil
+                                </p>
+                            </div>
+
+                            <!-- Visualisasi Batang Cokelat (Grid Kotak) -->
+                            <div class="bg-amber-50/70 rounded-3xl p-6 border-2 border-amber-100 text-center">
+                                <span class="inline-block px-3 py-1 rounded-full bg-white text-amber-800 text-xs font-bold shadow-xs mb-3">
+                                    🍫 Batang Cokelat (Kotak)
+                                </span>
+                                <div class="h-48 flex flex-col items-center justify-center my-2">
+                                    <div id="sim-bar-container" class="w-full max-w-[220px] grid gap-1.5 p-2.5 bg-amber-900/10 rounded-2xl border-2 border-amber-800/20">
+                                        <!-- Kotak cokelat dirender secara dinamis -->
+                                    </div>
+                                </div>
+                                <p id="sim-bar-caption" class="text-xs font-semibold text-slate-600 mt-2">
+                                    1 dari 4 kotak cokelat diarsir
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. KUIS INTERAKTIF PECAHAN (10 SOAL PILIHAN GANDA) -->
+        <section id="kuis" class="scroll-mt-24">
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-slate-800">
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-extrabold uppercase tracking-wider">Bagian 3 • Tantangan Seru</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-2">Kuis Pintar Pecahan</h2>
+                    <p class="text-slate-300 text-sm sm:text-base">
+                        Jawab 10 soal pilihan ganda berikut untuk menguji kemampuanmu. Setiap soal memiliki gambar dan pembahasan!
+                    </p>
+                </div>
+
+                <!-- Kontainer Utama Kuis -->
+                <div class="max-w-3xl mx-auto bg-slate-800/90 border border-slate-700 rounded-3xl p-6 sm:p-8">
+                    
+                    <!-- Tampilan Saat Mengerjakan Soal -->
+                    <div id="quiz-play-area">
+                        <!-- Bar Progres & Skor -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 pb-5 mb-6 border-b border-slate-700">
+                            <div class="flex-1 min-w-[200px]">
+                                <div class="flex justify-between text-xs font-bold mb-1.5">
+                                    <span id="quiz-step-label" class="text-amber-400">Soal 1 dari 10</span>
+                                    <span id="quiz-percent-label" class="text-slate-400">10%</span>
+                                </div>
+                                <div class="w-full h-3 bg-slate-700 rounded-full overflow-hidden">
+                                    <div id="quiz-progress-fill" class="h-full bg-gradient-to-r from-sky-400 to-emerald-400 transition-all duration-300 rounded-full" style="width: 10%"></div>
+                                </div>
+                            </div>
+                            <div class="bg-slate-900 px-4 py-2 rounded-2xl border border-slate-700 flex items-center gap-2">
+                                <span class="text-xs text-slate-400 font-semibold">Skor:</span>
+                                <span id="quiz-score-badge" class="font-display text-xl font-bold text-emerald-400">0</span>
+                            </div>
+                        </div>
+
+                        <!-- Area Pertanyaan + Gambar Visual (Jika ada) -->
+                        <div class="mb-6">
+                            <div id="quiz-visual-box" class="hidden mb-5 bg-slate-900/80 border border-slate-700 rounded-2xl p-4 flex flex-col items-center justify-center">
+                                <!-- SVG Soal akan dirender di sini -->
+                            </div>
+                            <h3 id="quiz-question-text" class="text-lg sm:text-xl font-bold text-white leading-relaxed">
+                                Memuat pertanyaan...
+                            </h3>
+                        </div>
+
+                        <!-- Pilihan Jawaban -->
+                        <div id="quiz-options-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-6">
+                            <!-- Tombol Opsi A, B, C, D -->
+                        </div>
+
+                        <!-- Kotak Umpan Balik & Pembahasan -->
+                        <div id="quiz-feedback-box" class="hidden p-4 rounded-2xl mb-6 text-sm leading-relaxed">
+                            <!-- Umpan balik benar/salah -->
+                        </div>
+
+                        <!-- Tombol Navigasi Soal -->
+                        <div class="flex justify-end">
+                            <button id="quiz-next-button" onclick="goToNextQuestion()" class="hidden px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-display font-bold text-base shadow-lg transition-all flex items-center gap-2">
+                                Soal Selanjutnya ➔
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tampilan Hasil Akhir Kuis -->
+                    <div id="quiz-summary-area" class="hidden text-center py-6 space-y-6">
+                        <div id="summary-trophy" class="text-7xl animate-bounce">🏆</div>
+                        <div>
+                            <h3 class="font-display text-3xl font-bold text-white mb-2">Kuis Selesai!</h3>
+                            <p id="summary-feedback-text" class="text-slate-300 max-w-md mx-auto text-sm sm:text-base">
+                                Hebat sekali! Kamu sudah menyelesaikan semua tantangan pecahan.
+                            </p>
+                        </div>
+
+                        <div class="inline-flex flex-col items-center bg-slate-900 border-2 border-slate-700 rounded-3xl px-10 py-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Nilai Akhir Kamu</span>
+                            <div class="font-display text-5xl sm:text-6xl font-bold text-amber-400">
+                                <span id="summary-final-score">100</span><span class="text-2xl text-slate-500">/100</span>
+                            </div>
+                            <span id="summary-correct-count" class="mt-2 text-xs font-semibold text-emerald-400">Benar 10 dari 10 soal</span>
+                        </div>
+
+                        <div>
+                            <button onclick="resetAndShuffleQuiz()" class="px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-display font-bold text-base shadow-lg shadow-emerald-500/20 transition-all inline-flex items-center gap-2">
+                                🔄 Ulangi Kuis (Acak Soal)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. FOOTER EDUKATIF SEDERHANA -->
+    <footer class="bg-white border-t-2 border-sky-100 py-8 mt-16 text-center">
+        <div class="max-w-6xl mx-auto px-4 space-y-2">
+            <div class="flex items-center justify-center gap-2 font-display font-bold text-lg text-slate-800">
+                <span>🍕</span> PecahanSeru • Matematika Sekolah Dasar
+            </div>
+            <p class="text-xs sm:text-sm text-slate-500">
+                Teruslah berlatih dan berbagi dengan adil. Belajar matematika jadi lebih seru dengan visual!
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LENGKAP UNTUK VISUAL SVG, SIMULATOR, DAN KUIS -->
+    <script>
+        /**
+         * Fungsi Pembantu Membuat SVG Pie Chart (Potongan Pizza/Lingkaran) Akurat
+         * @param {number} num - Pembilang (jumlah irisan diarsir)
+         * @param {number} den - Penyebut (total irisan sama besar)
+         * @param {string} fillColor - Warna irisan aktif
+         * @param {string} emptyColor - Warna irisan kosong
+         * @returns {string} Markup SVG
+         */
+        function createPieSVG(num, den, fillColor = '#F59E0B', emptyColor = '#FEF3C7') {
+            const cx = 50, cy = 50, r = 44;
+            let paths = '';
+
+            // Jika seluruh lingkaran penuh (num === den)
+            if (num === den) {
+                paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fillColor}" stroke="#78350F" stroke-width="2.5"/>`;
+                for (let i = 0; i < den; i++) {
+                    const angle = (i * 360 / den - 90) * (Math.PI / 180);
+                    const x = cx + r * Math.cos(angle);
+                    const y = cy + r * Math.sin(angle);
+                    paths += `<line x1="${cx}" y1="${cy}" x2="${x.toFixed(2)}" y2="${y.toFixed(2)}" stroke="#78350F" stroke-width="2"/>`;
+                }
+            } else {
+                for (let i = 0; i < den; i++) {
+                    const startAngle = (i * 360 / den - 90) * (Math.PI / 180);
+                    const endAngle = ((i + 1) * 360 / den - 90) * (Math.PI / 180);
+
+                    const x1 = cx + r * Math.cos(startAngle);
+                    const y1 = cy + r * Math.sin(startAngle);
+                    const x2 = cx + r * Math.cos(endAngle);
+                    const y2 = cy + r * Math.sin(endAngle);
+
+                    const largeArcFlag = (360 / den) > 180 ? 1 : 0;
+                    const sliceColor = i < num ? fillColor : emptyColor;
+
+                    paths += `<path d="M ${cx} ${cy} L ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 ${largeArcFlag} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z" 
+                                fill="${sliceColor}" stroke="#78350F" stroke-width="2" stroke-linejoin="round"/>`;
+                }
+            }
+
+            // Pinggiran kulit pizza luar
+            return `
+                <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow-sm">
+                    <circle cx="50" cy="50" r="47" fill="#D97706" />
+                    ${paths}
+                </svg>
+            `;
+        }
+
+        /**
+         * Fungsi Pembantu Membuat SVG Batang Kotak (Untuk Soal Kuis)
+         */
+        function createGridBarSVG(num, den, fillColor = '#38BDF8') {
+            const boxWidth = 240 / den;
+            let rects = '';
+            for (let i = 0; i < den; i++) {
+                const color = i < num ? fillColor : '#1E293B';
+                rects += `<rect x="${10 + i * boxWidth}" y="15" width="${boxWidth}" height="50" fill="${color}" stroke="#94A3B8" stroke-width="2.5"/>`;
+            }
+            return `
+                <svg viewBox="0 0 260 80" class="w-60 h-20">
+                    ${rects}
+                </svg>
+            `;
+        }
+
+        // ==========================================
+        // 1. INISIALISASI VISUAL BAGIAN MATERI
+        // ==========================================
+        function initMaterialVisuals() {
+            // Hero Pizza 3/4
+            document.getElementById('hero-pizza-svg').innerHTML = createPieSVG(3, 4, '#F59E0B', '#FEF3C7');
+
+            // Contoh Pecahan Sehari-hari
+            const dailyExamples = [
+                { num: 1, den: 2, title: "Setengah", read: "Satu per dua", desc: "1 pizza dibagi 2 bagian sama besar, diambil 1 bagian.", color: "#F59E0B" },
+                { num: 1, den: 3, title: "Sepertiga", read: "Satu per tiga", desc: "1 kue dibagi 3 bagian sama besar, diambil 1 bagian.", color: "#0EA5E9" },
+                { num: 1, den: 4, title: "Seperempat", read: "Satu per empat", desc: "1 loyang dibagi 4 bagian sama besar, diambil 1 bagian.", color: "#10B981" },
+                { num: 3, den: 4, title: "Tiga Perempat", read: "Tiga per empat", desc: "1 loyang dibagi 4 bagian sama besar, diambil 3 bagian.", color: "#F43F5E" }
+            ];
+
+            const examplesGrid = document.getElementById('examples-grid');
+            examplesGrid.innerHTML = dailyExamples.map(ex => `
+                <div class="bg-white rounded-3xl p-5 shadow-md border-2 border-slate-100 hover:border-sky-300 transition-all text-center flex flex-col justify-between">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold mb-3">${ex.title}</span>
+                        <div class="w-28 h-28 mx-auto mb-3">
+                            ${createPieSVG(ex.num, ex.den, ex.color, '#F8FAFC')}
+                        </div>
+                        <div class="inline-flex flex-col items-center font-display text-3xl font-bold text-slate-900 leading-none mb-2">
+                            <span style="color: ${ex.color}">${ex.num}</span>
+                            <span class="w-6 h-1 bg-slate-800 rounded-full my-1"></span>
+                            <span>${ex.den}</span>
+                        </div>
+                        <h4 class="font-display font-bold text-base text-slate-800 mb-1">"${ex.read}"</h4>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed mt-2">${ex.desc}</p>
+                </div>
+            `).join('');
+
+            // Visual Perbandingan 1/2 vs 1/4
+            document.getElementById('comp-svg-1').innerHTML = createPieSVG(1, 2, '#F43F5E', '#FFE4E6');
+            document.getElementById('comp-svg-2').innerHTML = createPieSVG(1, 4, '#F43F5E', '#FFE4E6');
+
+            // Visual Pecahan Senilai 1/2 = 2/4
+            document.getElementById('equiv-svg-1').innerHTML = createPieSVG(1, 2, '#10B981', '#D1FAE5');
+            document.getElementById('equiv-svg-2').innerHTML = createPieSVG(2, 4, '#10B981', '#D1FAE5');
+        }
+
+        // ==========================================
+        // 2. LOGIKA SIMULATOR PECAHAN INTERAKTIF
+        // ==========================================
+        const numberWords = ["Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan"];
+
+        function changeNumerator(delta) {
+            const numSlider = document.getElementById('num-slider');
+            const newVal = parseInt(numSlider.value) + delta;
+            if (newVal >= 1 && newVal <= parseInt(numSlider.max)) {
+                numSlider.value = newVal;
+                updateSimulator();
+            }
+        }
+
+        function changeDenominator(delta) {
+            const denSlider = document.getElementById('den-slider');
+            const newVal = parseInt(denSlider.value) + delta;
+            if (newVal >= 2 && newVal <= 8) {
+                denSlider.value = newVal;
+                updateSimulator();
+            }
+        }
+
+        function updateSimulator() {
+            const numSlider = document.getElementById('num-slider');
+            const denSlider = document.getElementById('den-slider');
+
+            const den = parseInt(denSlider.value);
+            numSlider.max = den;
+
+            let num = parseInt(numSlider.value);
+            if (num > den) {
+                num = den;
+                numSlider.value = den;
+            }
+
+            // Update Badge & Teks Angka
+            document.getElementById('num-badge').textContent = num;
+            document.getElementById('den-badge').textContent = den;
+            document.getElementById('sim-num-display').textContent = num;
+            document.getElementById('sim-den-display').textContent = den;
+
+            // Nama Bacaan Pecahan
+            let readText = `${numberWords[num]} per ${numberWords[den].toLowerCase()}`;
+            if (num === 1 && den === 2) readText += " (Setengah)";
+            if (num === 1 && den === 4) readText += " (Seperempat)";
+            if (num === den) readText += " (1 Utuh)";
+            document.getElementById('sim-read-text').textContent = readText;
+
+            // Nilai Desimal & Persen Sederhana
+            const decimalVal = (num / den).toFixed(2).replace('.', ',');
+            const percentVal = Math.round((num / den) * 100);
+            document.getElementById('sim-decimal').textContent = decimalVal;
+            document.getElementById('sim-percent').textContent = `${percentVal}%`;
+
+            // Render Pie Chart SVG
+            document.getElementById('sim-pie-container').innerHTML = createPieSVG(num, den, '#F59E0B', '#FEF3C7');
+            document.getElementById('sim-pie-caption').textContent = `${num} dari ${den} potong pizza diambil`;
+
+            // Render Batang Cokelat (Grid Kotak)
+            const barContainer = document.getElementById('sim-bar-container');
+            barContainer.style.gridTemplateColumns = `repeat(${den}, minmax(0, 1fr))`;
+            let blocksHTML = '';
+            for (let i = 0; i < den; i++) {
+                const isActive = i < num;
+                blocksHTML += `
+                    <div class="h-16 rounded-lg transition-all duration-200 border-2 ${
+                        isActive 
+                        ? 'bg-amber-600 border-amber-800 shadow-inner scale-100' 
+                        : 'bg-white border-slate-200 opacity-70'
+                    }"></div>
+                `;
+            }
+            barContainer.innerHTML = blocksHTML;
+            document.getElementById('sim-bar-caption').textContent = `${num} dari ${den} kotak cokelat diarsir`;
+        }
+
+        // ==========================================
+        // 3. DATA & LOGIKA KUIS INTERAKTIF (10 SOAL)
+        // ==========================================
+        const masterQuestions = [
+            {
+                question: "Perhatikan gambar potongan pizza di atas! Berapa nilai pecahan dari bagian pizza yang berwarna kuning?",
+                visualType: "pie",
+                num: 1,
+                den: 4,
+                options: ["1/2", "1/3", "1/4", "3/4"],
+                answer: 2,
+                explanation: "Pizza dibagi menjadi 4 potong sama besar dan ada 1 potong yang berwarna kuning, sehingga nilainya adalah 1/4."
+            },
+            {
+                question: "Pada bilangan pecahan 3/5, angka 3 disebut sebagai...",
+                visualType: "none",
+                options: ["Penyebut", "Pembilang", "Pembagi", "Bilangan bulat"],
+                answer: 1,
+                explanation: "Angka yang berada di bagian atas garis pecahan (angka 3) disebut Pembilang, sedangkan angka di bawah (angka 5) disebut Penyebut."
+            },
+            {
+                question: "Perhatikan batang kotak di atas! Nilai pecahan yang ditunjukkan oleh kotak berwarna biru adalah...",
+                visualType: "bar",
+                num: 2,
+                den: 5,
+                options: ["2/3", "3/5", "2/5", "5/2"],
+                answer: 2,
+                explanation: "Terdapat 5 kotak seluruhnya dan 2 kotak diwarnai biru, sehingga pecahannya adalah 2/5 (dua per lima)."
+            },
+            {
+                question: "Pecahan 'tiga per delapan' jika ditulis dalam bentuk lambang bilangan adalah...",
+                visualType: "none",
+                options: ["8/3", "3/8", "3/5", "1/8"],
+                answer: 1,
+                explanation: "Tiga per delapan ditulis dengan pembilang 3 di atas dan penyebut 8 di bawah: 3/8."
+            },
+            {
+                question: "Perhatikan gambar lingkaran di atas! Bagian yang diarsir menunjukkan pecahan...",
+                visualType: "pie",
+                num: 3,
+                den: 4,
+                options: ["1/4", "2/4", "3/4", "4/4"],
+                answer: 2,
+                explanation: "Lingkaran dibagi menjadi 4 bagian sama besar dan 3 bagian di antaranya diarsir, maka nilainya adalah 3/4."
+            },
+            {
+                question: "Ibu memotong sebuah melon menjadi 6 bagian sama besar. Budi memakan 2 potong melon. Berapa bagian melon yang dimakan Budi?",
+                visualType: "none",
+                options: ["2/6", "4/6", "6/2", "1/6"],
+                answer: 0,
+                explanation: "Jumlah seluruh potongan melon adalah 6 (penyebut) dan yang dimakan Budi adalah 2 potong (pembilang), jadi 2/6."
+            },
+            {
+                question: "Manakah tanda perbandingan yang tepat untuk mengisi titik-titik berikut:  1/2  ...  1/4",
+                visualType: "none",
+                options: ["< (lebih kecil)", "> (lebih besar)", "= (sama dengan)", "Tidak bisa dibandingkan"],
+                answer: 1,
+                explanation: "1 bagian dari 2 potongan (setengah) ukurannya lebih besar daripada 1 bagian dari 4 potongan (seperempat), sehingga 1/2 > 1/4."
+            },
+            {
+                question: "Pecahan di bawah ini yang senilai (sama besar) dengan pecahan 1/2 adalah...",
+                visualType: "pie",
+                num: 1,
+                den: 2,
+                options: ["1/4", "2/4", "3/4", "1/3"],
+                answer: 1,
+                explanation: "1/2 memiliki ukuran bagian yang sama persis dengan 2/4 (dua potong dari empat bagian sama besar)."
+            },
+            {
+                question: "Lihat gambar batang kotak di atas! Berapa bagian kotak yang TIDAK diwarnai (berwarna gelap)?",
+                visualType: "bar",
+                num: 3,
+                den: 4,
+                options: ["3/4", "2/4", "1/4", "4/4"],
+                answer: 2,
+                explanation: "Hati-hati membaca soal! Dari 4 kotak, ada 3 yang diwarnai dan 1 kotak yang TIDAK diwarnai. Jadi jawabannya adalah 1/4."
+            },
+            {
+                question: "Siti memiliki 1 batang cokelat berisi 8 petak. Ia memberikan 3 petak kepada adiknya. Sisa cokelat Siti sekarang adalah...",
+                visualType: "none",
+                options: ["3/8 bagian", "5/8 bagian", "4/8 bagian", "8/8 bagian"],
+                answer: 1,
+                explanation: "Dari 8 petak cokelat, diberikan 3 petak kepada adik, maka sisanya adalah 8 - 3 = 5 petak, yaitu 5/8 bagian."
+            }
+        ];
+
+        let activeQuestions = [];
+        let currentIdx = 0;
+        let currentScore = 0;
+        let correctAnswersCount = 0;
+        let questionLocked = false;
+
+        // Algoritma Fisher-Yates untuk mengacak urutan soal saat mengulang kuis
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function startQuiz(shouldShuffle = false) {
+            activeQuestions = shouldShuffle ? shuffleArray(masterQuestions) : [...masterQuestions];
+            currentIdx = 0;
+            currentScore = 0;
+            correctAnswersCount = 0;
+
+            document.getElementById('quiz-score-badge').textContent = '0';
+            document.getElementById('quiz-summary-area').classList.add('hidden');
+            document.getElementById('quiz-play-area').classList.remove('hidden');
+
+            renderCurrentQuestion();
+        }
+
+        function renderCurrentQuestion() {
+            questionLocked = false;
+            const q = activeQuestions[currentIdx];
+            const total = activeQuestions.length;
+
+            // Update Bar Progres
+            document.getElementById('quiz-step-label').textContent = `Soal ${currentIdx + 1} dari ${total}`;
+            const percent = Math.round(((currentIdx + 1) / total) * 100);
+            document.getElementById('quiz-percent-label').textContent = `${percent}%`;
+            document.getElementById('quiz-progress-fill').style.width = `${percent}%`;
+
+            // Render Visual Soal (Jika ada)
+            const visualBox = document.getElementById('quiz-visual-box');
+            if (q.visualType === 'pie') {
+                visualBox.classList.remove('hidden');
+                visualBox.innerHTML = `<div class="w-32 h-32">${createPieSVG(q.num, q.den, '#F59E0B', '#1E293B')}</div>`;
+            } else if (q.visualType === 'bar') {
+                visualBox.classList.remove('hidden');
+                visualBox.innerHTML = createGridBarSVG(q.num, q.den, '#38BDF8');
+            } else {
+                visualBox.classList.add('hidden');
+                visualBox.innerHTML = '';
+            }
+
+            // Teks Pertanyaan
+            document.getElementById('quiz-question-text').textContent = q.question;
+
+            // Sembunyikan Umpan Balik & Tombol Lanjut
+            document.getElementById('quiz-feedback-box').classList.add('hidden');
+            document.getElementById('quiz-next-button').classList.add('hidden');
+
+            // Render Pilihan Jawaban A, B, C, D
+            const optionsList = document.getElementById('quiz-options-list');
+            const letters = ['A', 'B', 'C', 'D'];
+            optionsList.innerHTML = q.options.map((opt, idx) => `
+                <button onclick="handleOptionSelect(${idx})" id="quiz-opt-${idx}"
+                    class="text-left p-4 rounded-2xl bg-slate-900/90 border-2 border-slate-700 hover:border-sky-400 hover:bg-slate-800 transition-all flex items-center gap-3.5 font-semibold text-sm sm:text-base">
+                    <span class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-600 flex items-center justify-center font-display font-bold text-amber-400 shrink-0">
+                        ${letters[idx]}
+                    </span>
+                    <span>${opt}</span>
+                </button>
+            `).join('');
+        }
+
+        function handleOptionSelect(selectedIdx) {
+            if (questionLocked) return;
+            questionLocked = true;
+
+            const q = activeQuestions[currentIdx];
+            const isCorrect = selectedIdx === q.answer;
+            const feedbackBox = document.getElementById('quiz-feedback-box');
+
+            // Beri warna pada tombol pilihan
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`quiz-opt-${idx}`);
+                btn.disabled = true;
+                btn.classList.remove('hover:border-sky-400', 'hover:bg-slate-800');
+
+                if (idx === q.answer) {
+                    btn.classList.remove('bg-slate-900/90', 'border-slate-700');
+                    btn.classList.add('bg-emerald-950', 'border-emerald-500', 'text-emerald-200');
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.classList.remove('bg-slate-900/90', 'border-slate-700');
+                    btn.classList.add('bg-rose-950', 'border-rose-500', 'text-rose-200');
+                } else {
+                    btn.classList.add('opacity-45');
+                }
+            });
+
+            if (isCorrect) {
+                currentScore += 10;
+                correctAnswersCount++;
+                document.getElementById('quiz-score-badge').textContent = currentScore;
+                feedbackBox.className = "p-4 rounded-2xl mb-6 text-sm leading-relaxed bg-emerald-950/90 border-2 border-emerald-500/60 text-emerald-100";
+                feedbackBox.innerHTML = `<strong class="text-emerald-400 text-base block mb-1">🎉 Hebat! Jawaban Kamu Benar!</strong> ${q.explanation}`;
+            } else {
+                feedbackBox.className = "p-4 rounded-2xl mb-6 text-sm leading-relaxed bg-rose-950/90 border-2 border-rose-500/60 text-rose-100";
+                feedbackBox.innerHTML = `<strong class="text-rose-400 text-base block mb-1">💡 Hampir Tepat! Yuk Simak Pembahasannya:</strong> ${q.explanation}`;
+            }
+
+            feedbackBox.classList.remove('hidden');
+
+            const nextBtn = document.getElementById('quiz-next-button');
+            nextBtn.innerHTML = currentIdx === activeQuestions.length - 1 ? "Lihat Nilai Akhir 🏆" : "Soal Selanjutnya ➔";
+            nextBtn.classList.remove('hidden');
+        }
+
+        function goToNextQuestion() {
+            currentIdx++;
+            if (currentIdx < activeQuestions.length) {
+                renderCurrentQuestion();
+            } else {
+                showFinalSummary();
+            }
+        }
+
+        function showFinalSummary() {
+            document.getElementById('quiz-play-area').classList.add('hidden');
+            const summaryArea = document.getElementById('quiz-summary-area');
+            summaryArea.classList.remove('hidden');
+
+            document.getElementById('summary-final-score').textContent = currentScore;
+            document.getElementById('summary-correct-count').textContent = `Benar ${correctAnswersCount} dari ${activeQuestions.length} soal`;
+
+            const trophyEl = document.getElementById('summary-trophy');
+            const msgEl = document.getElementById('summary-feedback-text');
+
+            if (currentScore >= 80) {
+                trophyEl.textContent = "🏆";
+                msgEl.textContent = "Luar biasa! Kamu sudah sangat paham materi Pecahan Sederhana!";
+            } else if (currentScore >= 60) {
+                trophyEl.textContent = "🌟";
+                msgEl.textContent = "Bagus sekali! Terus berlatih menggunakan simulator di atas agar makin mahir ya!";
+            } else {
+                trophyEl.textContent = "📚";
+                msgEl.textContent = "Tetap semangat! Yuk baca lagi materi pecahan di atas dan coba ulangi kuisnya.";
+            }
+        }
+
+        function resetAndShuffleQuiz() {
+            startQuiz(true);
+        }
+
+        // Jalankan inisialisasi saat halaman siap
+        window.addEventListener('DOMContentLoaded', () => {
+            initMaterialVisuals();
+            updateSimulator();
+            startQuiz(false);
+        });
+    </script>
+</body>
+</html>
